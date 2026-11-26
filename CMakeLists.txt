@@ -12,6 +12,9 @@ add_library(mini_kv_core
     src/connection_manager.cpp
     src/append_log.cpp
     src/tcp_server.cpp
+    src/buffer.cpp
+    src/kv_store.cpp
+    src/command_handler.cpp
 )
 
 target_include_directories(mini_kv_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -31,9 +34,15 @@ add_executable(test_append_log tests/test_append_log.cpp)
 add_executable(test_dup tests/test_dup.cpp)
 add_executable(test_nonblocking tests/test_nonblocking.cpp)
 add_executable(test_tcp_server tests/test_tcp_server.cpp)
+add_executable(test_buffer tests/test_buffer.cpp)
+add_executable(test_kv_store tests/test_kv_store.cpp)
+add_executable(test_command_handler tests/test_command_handler.cpp)
 
 target_link_libraries(test_io_utils PRIVATE mini_kv_core)
 target_link_libraries(test_append_log PRIVATE mini_kv_core)
 target_link_libraries(test_dup PRIVATE mini_kv_core)
 target_link_libraries(test_nonblocking PRIVATE mini_kv_core)
 target_link_libraries(test_tcp_server PRIVATE mini_kv_core)
+target_link_libraries(test_buffer PRIVATE mini_kv_core)
+target_link_libraries(test_kv_store PRIVATE mini_kv_core)
+target_link_libraries(test_command_handler PRIVATE mini_kv_core)
